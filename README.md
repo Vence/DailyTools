@@ -53,7 +53,7 @@ WORD中对字体的大小同时采用了两种不同的度量单位，其一是�
 **这里就是先把内容，布局，样式等做好，转成html，然后利用POI将html转成word的时候是转成web大纲样式的，所以失真较少。**
  
 ##分词功能
-这里提供了分词的两种方法
+这里提供了分词的三种方法
 
  - 一种是利用IKAnalyzer2012FF_u1.jar包，这个包是针对于Lucene4.0以上的，如果低版本请使用IKAnalyzer2012.jar；
  两者在包的方法上都有差别。
@@ -72,3 +72,21 @@ WORD中对字体的大小同时采用了两种不同的度量单位，其一是�
   ![](http://i3.tietuku.com/b0e2c20276bbc267s.png)
   
   百度还提供了其他很多种API，可以通过一样的方法进行访问。
+
+ - 另外一种方法也是利用IKAnalyzer进行分词的，不同的是添加了配置文件，配置`ext_dict` 和 `ext_stopwords` , 需要添加配置文件和词典文件，这里需要注意的是`IKAnalyzer.cfg.xml`配置文件只能放在src根目录下，而词典也就是dic文件可以放在任何位置，需要在IKAnalyzer.cfg.xml配置文件中声明路径。
+ 
+对于以上路径问题，如果是maven项目，并且词典文件也是放在src下，编译的时候并不会把src文件编译到target下，所以需要在`pom.xml`
+中使src进入build目录
+
+		<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.dic</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		</build>
+
