@@ -20,12 +20,19 @@ import java.util.Vector;
 
 import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.wltea.analyzer.cfg.DefaultConfig;
+import org.wltea.analyzer.dic.Dictionary;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 /**
  * Analyzer帮助类
- * 提供两种方法：
+ * 提供三种方法：
  * 1 、 利用IKanalyzer进行分词，不过这里把姓名也是切分成单字，所以需要建立一个词库，这样才能准确进行分词
  * 2 、 利用百度提供的API，这里分词效果较好，并且提供了相关度等数据
+ * 3、  利用IKAnalyzer并且配合扩展以及排除使得分词更加精确
  * 
  * @author 王文路
  * @date 2015-7-14
