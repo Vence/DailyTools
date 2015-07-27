@@ -233,6 +233,59 @@ public class AnalyzerHelper {
 		
 		return  request(httpUrl, httpArg);
 	}
+	
+	/**********第三种方法，利用扩展和排除分词**************/
+	private static String getRequest( String sen ) {
+		
+		// 尚未初始化，因为第一次执行分词的时候才会初始化，为了在执行分此前手动添加额外的字典，需要先手动的初始化一下
+		Dictionary.initial(DefaultConfig.getInstance());
+		
+		String res = "";
+		
+		//创建Analyzer对象
+		Analyzer an = new IKAnalyzer(true);//智能切词，false表示细颗粒切词
+		StringReader reader = new StringReader(sen);
+		
+		//start 分词
+		TokenStream ts=null;
+		try {
+			ts = an.tokenStream("", reader);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+        CharTermAttribute term=ts.getAttribute(CharTermAttribute.class);  
+       
+        //遍历分词result
+        try {
+			while(ts.incrementToken()){  
+				
+				//去除长度为1的词语
+				if( term.toString().length()<=1 ){
+//					continue;
+				}
+			    if( res=="" ) {
+			    	res = term.toString();
+			    }
+			    else {
+			    	res = res + ANALYZER_SEPARATOR + term.toString();
+			    }
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+        reader.close(); 
+        return res;
+	}
+	
+	public static String[] getPullWords3(String text){
+		
+		String ret = getRequest(text);
+		
+		return ret.split(ANALYZER_SEPARATOR);
+		
+	}
 
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
