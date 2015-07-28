@@ -55,7 +55,7 @@ public class AnalyzerHelper {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String[] participle( String sen ){
+	public static String[] pullWordMethod1( String sen ){
 		
 		String res = "";
 		
@@ -230,7 +230,7 @@ public class AnalyzerHelper {
 	 * @return 返回分词结果
 	 * @throws UnsupportedEncodingException
 	 */
-	public static String[] pullword(String words) throws UnsupportedEncodingException{
+	public static String[] pullWordMethod2(String words) throws UnsupportedEncodingException{
 		
 		// 进行编码
 		words = URLEncoder.encode(words,"UTF-8");
@@ -242,6 +242,7 @@ public class AnalyzerHelper {
 	}
 	
 	/**********第三种方法，利用扩展和排除分词**************/
+	
 	private static String getRequest( String sen ) {
 		
 		// 尚未初始化，因为第一次执行分词的时候才会初始化，为了在执行分此前手动添加额外的字典，需要先手动的初始化一下
@@ -286,7 +287,7 @@ public class AnalyzerHelper {
         return res;
 	}
 	
-	public static String[] getPullWords3(String text){
+	public static String[] pullWordMethod3(String text){
 		
 		String ret = getRequest(text);
 		
@@ -296,16 +297,12 @@ public class AnalyzerHelper {
 
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		String[] rets = pullword("王文路，北京的学校都很好吗");
-		
-		for (String ret : rets) {
-			System.out.println(ret);
-		}
-
-		String[] rets1 = participle("王文路");
-		for (String ret : rets1) {
-			System.out.println(ret);
-		}
+		 String text="王文路的资料在那里";
+	        String[] rets = pullWordMethod3(text);
+	        
+	        for (String re : rets) {
+	        	System.out.print(re + " ");
+	        }
 	}
 	
 

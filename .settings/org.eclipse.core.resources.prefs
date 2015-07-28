@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
-encoding/<project>=UTF-8
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/wwl/util/html2word=UTF-8
+encoding//src/main/java/com/wwl/util/pullwords=UTF-8
+encoding//src/main/java/com/wwl/util/pullwords/AnalyzerHelper.java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/userName.dic=UTF-8
