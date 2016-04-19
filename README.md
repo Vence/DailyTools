@@ -67,9 +67,9 @@ WORD中对字体的大小同时采用了两种不同的度量单位，其一是�
  - 另外一种是调用[百度的APIStore](http://apistore.baidu.com/) 的API接口，百度实现的分词效果不错，就算连人名也会精确搜索出，
  并且给出每一个分词结果的相关度
  
- ![](http://i3.tietuku.com/35a4bad53683c0efs.png)
+ ![](http://i3.piimg.com/35a4bad53683c0ef.png)
  
-  ![](http://i3.tietuku.com/b0e2c20276bbc267s.png)
+  ![](http://i3.piimg.com/b0e2c20276bbc267.png)
   
   百度还提供了其他很多种API，可以通过一样的方法进行访问。
 
