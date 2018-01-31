@@ -1,7 +1,7 @@
 # DailyTools
 日常工具类，提供如下功能：
 
-##将内容导出html
+## 将内容导出html
 
  - 这一部分没有难点，主要讲利用导出的html转成word内容，这里需要注意的是在导出到html的时候，一要注意中文编码问题，
 另外注意对字体字号等进行声明：
@@ -34,7 +34,7 @@ WORD中对字体的大小同时采用了两种不同的度量单位，其一是�
 ，还需要将图片的防盗链有效化，也就是要将图片中防盗链信息更换成有效的，比如我的防盗链中包含了`sessionid`  , 
 由于有效期只是在会话期间，所以这里需要需要把`sessionid`换成当前用户的有效`sessionid` .
 
-##利用POI框架将html转成word
+## 利用POI框架将html转成word
 
 - poi提供了将内容转成word的语法：
 
@@ -42,7 +42,6 @@ WORD中对字体的大小同时采用了两种不同的度量单位，其一是�
 			DirectoryEntry directory = poifs.getRoot();
 			directory.createDocument(
 					"WordDocument", is);
-
 			fos = new FileOutputStream(this.outputPath);
 			poifs.writeFilesystem(fos);
 			
@@ -52,7 +51,7 @@ WORD中对字体的大小同时采用了两种不同的度量单位，其一是�
 **这里是避免转成word的时候失真，而且在控制字体大小颜色，表格样式，图片大小和位置，直接通过POI进行更改格式比较麻烦。**
 **这里就是先把内容，布局，样式等做好，转成html，然后利用POI将html转成word的时候是转成web大纲样式的，所以失真较少。**
  
-##分词功能
+## 分词功能
 这里提供了分词的三种方法
 
  - 一种是利用IKAnalyzer2012FF_u1.jar包，这个包是针对于Lucene4.0以上的，如果低版本请使用IKAnalyzer2012.jar；
